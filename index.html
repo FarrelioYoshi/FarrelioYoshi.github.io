@@ -4,18 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portofolio Farrelio Yoshi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
       --bg-color: #ffffff;
       --text-color: #1a1a1a;
       --accent-color: #0077ff;
+      --secondary-bg: #f8f9fa;
+      --shadow: rgba(0,0,0,0.1);
     }
 
     [data-theme="dark"] {
       --bg-color: #1a1a1a;
       --text-color: #ffffff;
       --accent-color: #00bfff;
+      --secondary-bg: #2d2d2d;
+      --shadow: rgba(255,255,255,0.1);
     }
 
     * {
@@ -30,52 +35,84 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
-      padding: 2rem;
+      overflow-x: hidden;
     }
 
-    header {
+    .hero {
+      background: linear-gradient(135deg, var(--accent-color), #005fcc);
+      color: white;
+      padding: 4rem 2rem;
       text-align: center;
-      margin-bottom: 3rem;
-      animation: fadeInDown 1s ease-in-out;
+      position: relative;
+      overflow: hidden;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: var(--accent-color);
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+      opacity: 0.1;
     }
 
-    nav {
-      margin-top: 1rem;
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      z-index: 1;
+      position: relative;
     }
 
-    nav button {
-      background: none;
-      border: 2px solid var(--accent-color);
-      color: var(--accent-color);
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background 0.3s;
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      z-index: 1;
+      position: relative;
     }
 
-    nav button:hover {
-      background: var(--accent-color);
-      color: var(--bg-color);
+    .hero nav {
+      z-index: 1;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
 
     section {
+      margin-bottom: 4rem;
+      padding: 2rem 0;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      font-weight: 600;
       margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .card {
-      background: rgba(0,0,0,0.03);
-      padding: 1rem;
-      border-radius: 10px;
+      background: var(--secondary-bg);
+      padding: 2rem;
+      border-radius: 15px;
       margin-top: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, opacity 0.6s ease;
+      box-shadow: 0 8px 25px var(--shadow);
+      transition: transform 0.3s ease, opacity 0.6s ease, box-shadow 0.3s ease;
       opacity: 0;
       transform: translateY(30px);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px var(--shadow);
     }
 
     .card.visible {
@@ -84,6 +121,8 @@
     }
 
     .card h3 {
+      font-weight: 600;
+      margin-bottom: 1rem;
       transition: color 0.3s ease;
     }
 
@@ -93,9 +132,10 @@
 
     footer {
       text-align: center;
-      margin-top: 3rem;
+      padding: 2rem 0;
       font-size: 0.9rem;
       opacity: 0.7;
+      background: var(--secondary-bg);
     }
 
     @keyframes fadeInDown {
@@ -104,106 +144,170 @@
     }
 
     img.profile {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       display: block;
       margin-left: auto;
       margin-right: auto;
+      border: 5px solid var(--accent-color);
+      box-shadow: 0 8px 25px var(--shadow);
     }
 
     a {
       color: var(--accent-color);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     a:hover {
+      color: #005fcc;
       text-decoration: underline;
     }
 
     .download-btn {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
       background-color: var(--accent-color);
-      color: var(--bg-color);
+      color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 25px;
       text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,119,255,0.3);
     }
 
     .download-btn:hover {
       background-color: #005fcc;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,119,255,0.4);
+    }
+
+    nav button {
+      background: rgba(255,255,255,0.2);
+      border: 2px solid white;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    nav button:hover {
+      background: white;
+      color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .container {
+        padding: 0 1rem;
+      }
+      section {
+        padding: 1rem 0;
+      }
+      .card {
+        padding: 1.5rem;
+      }
+      img.profile {
+        width: 150px;
+        height: 150px;
+      }
     }
   </style>
 </head>
 <body data-theme="light">
-  <header>
+  <div class="hero">
     <h1>Halo, Saya Farrelio Yoshi</h1>
     <p>Web Developer | Engineering | Freelancer</p>
     <nav>
       <button onclick="toggleTheme()">🌗 Ganti Tema</button>
     </nav>
-  </header>
+  </div>
 
-  <section>
-    <h2>Tentang Saya</h2>
-    <div class="card scroll-animate">
-      <img src="WhatsApp Image 2025-11-13 at 19.10.10_8348cf66.jpg" alt="Foto Farrelio Yoshi" class="profile">
-      <p>Saya adalah lulusan SMK jurusan Teknik Komputer dan Jaringan (TKJ) dengan pengetahuan dasar jaringan, perangkat keras, dan sistem operasi. Memiliki semangat belajar tinggi serta mampu bekerja sama dalam tim.</p>
-    </div>
-  </section>
+  <div class="container">
+    <section>
+      <h2><i class="fas fa-user"></i> Tentang Saya</h2>
+      <div class="card scroll-animate">
+        <img src="WhatsApp Image 2025-11-13 at 19.10.10_8348cf66.jpg" alt="Foto Farrelio Yoshi" class="profile">
+        <p>Saya adalah lulusan SMK jurusan Teknik Komputer dan Jaringan (TKJ) dengan pengetahuan dasar jaringan, perangkat keras, dan sistem operasi. Memiliki semangat belajar tinggi serta mampu bekerja sama dalam tim.</p>
+      </div>
+    </section>
 
-  <section>
-    <h2>Pendidikan</h2>
-    <div class="card scroll-animate">
-      <p><strong>SMKS Poncol Jakarta Pusat</strong></p>
-      <p>Jurusan Teknik Komputer dan Jaringan (TKJ)</p>
-      <p>Lulus tahun 2026 dengan peminatan pada jaringan komputer dan sistem operasi</p>
-    </div>
-  </section>
+    <section>
+      <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
+      <div class="card scroll-animate">
+        <p><strong>SMKS Poncol Jakarta Pusat</strong></p>
+        <p>Jurusan Teknik Komputer dan Jaringan (TKJ)</p>
+        <p>Lulus tahun 2026 dengan peminatan pada jaringan komputer dan sistem operasi</p>
+      </div>
+    </section>
 
-  <section>
-    <h2>Sertifikat</h2>
-    <div class="card scroll-animate">
-      <ul>
-        <li>📄 Sertifikat Praktik Kerja Lapangan – PT. Jalur Satu Aman</li>
-        <li>🧠 Bootcamp Digital Business & Cyber Security – UNAS & UNSIA</li>
-        <li>🏆 Juara 1 Lomba Cyber Security Nasional – 2024</li>
-        <li>🎓 Sertifikat Pelatihan Pusat Kerja Daerah – Dinas Tenaga Kerja</li>
-      </ul>
-    </div>
-  </section>
+    <section>
+      <h2><i class="fas fa-certificate"></i> Sertifikat</h2>
+      <div class="card scroll-animate">
+        <ul>
+          <li><i class="fas fa-file-alt"></i> Sertifikat Praktik Kerja Lapangan – PT. Jalur Satu Aman</li>
+          <li><i class="fas fa-brain"></i> Bootcamp Digital Business & Cyber Security – UNAS & UNSIA</li>
+          <li><i class="fas fa-trophy"></i> Juara 1 Lomba Cyber Security Nasional – 2024</li>
+          <li><i class="fas fa-chalkboard-teacher"></i> Sertifikat Pelatihan Pusat Kerja Daerah – Dinas Tenaga Kerja</li>
+        </ul>
+      </div>
+    </section>
 
-  <section>
-    <h2>Proyek</h2>
-        <div class="card scroll-animate">
-      <h3>Membangun Jaringan LAN/WAN</h3>
-      <p>Semua perangkat terkoneksi dengan IP statis atau dinamis, internet stabil, dan VLAN aktif.</p>
-    </div>
-    <div class="card scroll-animate">
-      <h3>Konfigurasi Router dan Switch (Cisco, Mikrotik, dll.)</h3>
-      <p>Routing statis atau dinamis berjalan (RIP, OSPF), firewall aktif dan NAT berfungsi.</p>
-    </div>
-    <div class="card scroll-animate">
-      <h3>Pembuatan Topologi Jaringan Virtual</h3>
-      <p>Topologi kompleks dengan simulasi real.</p>
-  </section>
+    <section>
+      <h2><i class="fas fa-project-diagram"></i> Proyek</h2>
+      <div class="card scroll-animate">
+        <h3>Membangun Jaringan LAN/WAN</h3>
+        <p>Semua perangkat terkoneksi dengan IP statis atau dinamis, internet stabil, dan VLAN aktif.</p>
+      </div>
+      <div class="card scroll-animate">
+        <h3>Konfigurasi Router dan Switch (Cisco, Mikrotik, dll.)</h3>
+        <p>Routing statis atau dinamis berjalan (RIP, OSPF), firewall aktif dan NAT berfungsi.</p>
+      </div>
+      <div class="card scroll-animate">
+        <h3>Pembuatan Topologi Jaringan Virtual</h3>
+        <p>Topologi kompleks dengan simulasi real.</p>
+      </div>
+    </section>
 
-  <section>
-    <h2>Kontak</h2>
-    <div class="card scroll-animate">
-      <p>Email: farrelio.yoshi10@gmail.com</p>
-      <p>
-        <a href="https://www.instagram.com/farrelioyoshi/" target="_blank">🔗 Instagram</a>
-      </p>
-      <a href="putih dan hitam modern cv resume riwayat hidup.pdf" class="download-btn" download>⬇️ Unduh CV</a>
-    </div>
-  </section>
+    <section>
+      <h2><i class="fas fa-envelope"></i> Kontak</h2>
+      <div class="card scroll-animate">
+        <p><i class="fas fa-at"></i> Email: farrelio.yoshi10@gmail.com</p>
+        <p>
+          <a href="https://www.instagram.com/farrelioyoshi/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        </p>
+        <a href="putih dan hitam modern cv resume riwayat hidup.pdf" class="download-btn" download><i class="fas fa-download"></i> Unduh CV</a>
+      </div>
+    </section>
+  </div>
 
   <footer>
     &copy; 2025 Farrelio Yoshi. Dibuat dengan ❤️ dan semangat.
