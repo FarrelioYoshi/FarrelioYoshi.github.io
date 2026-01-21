@@ -277,4 +277,11 @@ ul li:last-child {
     width: 150px;
     height: 150px;
   }
+  .project-content {
+    flex-direction: column;
+  }
+  .project-image {
+    max-width: 100%;
+    width: 100%;
+  }
 }
