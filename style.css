@@ -181,6 +181,19 @@ img.profile {
   box-shadow: 0 8px 25px var(--shadow);
 }
 
+.project-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.project-image {
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
 a {
   color: var(--accent-color);
   text-decoration: none;
